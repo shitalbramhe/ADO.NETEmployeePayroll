@@ -10,7 +10,6 @@ namespace ADO.NetEmployeePayroll
 {
     internal class Operation
     {
-        List<EmployeeModel> EmpList = new List<EmployeeModel>();
         private SqlConnection con;
         //To Handle connection related activities    
         private void Connection()
@@ -75,6 +74,38 @@ namespace ADO.NetEmployeePayroll
                 {
 
                     return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        //To Update Employee details 
+        public bool UpdateEmployee(int id, string Name, string Salary)
+        {
+            try
+            {
+                Connection();
+                SqlCommand com = new SqlCommand("UpdatePayRoleServices", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@id", id);
+                com.Parameters.AddWithValue("@Name", Name);
+                com.Parameters.AddWithValue("@Salary", Salary);
+
+                con.Open();
+                int i = com.ExecuteNonQuery();
+                con.Close();
+                if (i >= 1)
+                {
+
+                    return true;
+
+                }
+                else
+                {
+
+                    return false;
                 }
             }
             catch (Exception e)

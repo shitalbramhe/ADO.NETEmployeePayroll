@@ -51,6 +51,23 @@ namespace ADO.NetEmployeePayroll
                         payroll.DeleteEmployee(num);
                         break;
                     case 3:
+                        Console.WriteLine("Enter id of employee whoes data you want to edit");
+                        int employeeid = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter new name");
+                        string newname = Console.ReadLine();
+                        Console.WriteLine("Enter new salary");
+                        string newsalry = Console.ReadLine();
+                        bool res = payroll.UpdateEmployee(employeeid, newname, newsalry);
+                        if (res != null)
+                        {
+                            Console.WriteLine("Successfully Added");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Not Added");
+                        }
+                        break;
+                    case 4:
                         flag = false;
                         break;
                 }

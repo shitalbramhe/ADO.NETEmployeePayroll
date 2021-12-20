@@ -46,6 +46,11 @@ namespace ADO.NetEmployeePayroll
                         }
                         break;
                     case 2:
+                        Console.WriteLine("Enter id to Delete Data");
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        payroll.DeleteEmployee(num);
+                        break;
+                    case 3:
                         flag = false;
                         break;
                 }

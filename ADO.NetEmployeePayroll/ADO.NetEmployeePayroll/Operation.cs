@@ -53,5 +53,34 @@ namespace ADO.NetEmployeePayroll
                 throw new Exception(e.Message);
             }
         }
+        //To Delete Employee details    
+        public int DeleteEmployee(int id)
+        {
+            try
+            {
+                Connection();
+                SqlCommand com = new SqlCommand("DeletePayRoleService", con);
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@id", id);
+                con.Open();
+                int i = com.ExecuteNonQuery();
+                con.Close();
+                if (i >= 1)
+                {
+
+                    return id;
+
+                }
+                else
+                {
+
+                    return 0;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

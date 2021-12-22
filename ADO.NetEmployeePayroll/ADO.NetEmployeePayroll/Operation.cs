@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ADO.NetEmployeePayroll
 {
-    internal class Operation
+    class Operation
     {
         private SqlConnection con;
         //To Handle connection related activities    
@@ -113,5 +113,24 @@ namespace ADO.NetEmployeePayroll
                 throw new Exception(e.Message);
             }
         }
+
+        //To Get Employee details 
+        public DataSet GetAllEmployees()
+        {
+            Connection();
+            DataSet dataSet = new DataSet(); ;
+            con.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("GetPayRoleService", con);
+            adapter.Fill(dataSet, "employee_payroll");
+            foreach (DataRow dataRow in dataSet.Tables["employee_payroll"].Rows)
+            {
+                Console.WriteLine("\t" + dataRow["id"] + "  " + dataRow["Name"] + " " + dataRow["Salary"] + " " + dataRow["gender"] + " " + dataRow["phoneNo"] + " " + dataRow["department"] + " " + dataRow["officeAddress"] + " " + dataRow["Basic_Pay"] + " " + dataRow["deductions"] + " " + dataRow["taxable_pay"] + " " + dataRow["income_tax"] + " " + dataRow["net_pay"] + " " + dataRow["dept_id"]);
+            }
+            return dataSet;
+        }
     }
 }
+
+
+        
+    

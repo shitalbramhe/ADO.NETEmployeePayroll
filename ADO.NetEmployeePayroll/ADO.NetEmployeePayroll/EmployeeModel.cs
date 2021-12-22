@@ -12,7 +12,7 @@ namespace ADO.NetEmployeePayroll
         public double Salary { get; set; }
         public DateTime Startdate { get; set; }
         public char gender { get; set; }
-        public double phoneNo { get; set; }
+        public int phoneNo { get; set; }
         public string department { get; set; }
         public string officeAddress { get; set; }
         public double Basic_Pay { get; set; }

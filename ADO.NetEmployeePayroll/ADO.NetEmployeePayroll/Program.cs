@@ -26,7 +26,7 @@ namespace ADO.NetEmployeePayroll
                         obj.Salary = 20000.00;
                         obj.Startdate = DateTime.Now;
                         obj.gender = 'F';
-                        obj.phoneNo = 9124234334;
+                        obj.phoneNo = 912423;
                         obj.department = "Account";
                         obj.officeAddress = "Pune";
                         obj.Basic_Pay = 5000.00;
@@ -68,6 +68,9 @@ namespace ADO.NetEmployeePayroll
                         }
                         break;
                     case 4:
+                        payroll.GetAllEmployees();
+                        break;
+                    case 5:
                         flag = false;
                         break;
                 }

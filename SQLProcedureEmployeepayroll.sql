@@ -54,14 +54,33 @@ select * from employee_payroll
 
 exec DeletePayRoleService 1
 
-------------------------------------------
-alter procedure GetPayRoleService
+------update--------
+alter procedure UpdatePayRoleServices
 (
-@id int
+@id int,
+@Name varchar (150),
+@Salary float
 )
 as 
 begin TRY 
-select * from employee_payroll
+Update employee_payroll set Name = @Name, Salary=@Salary where id = @id
+End TRY
+BEGIN CATCH
+SELECT
+ERROR_NUMBER() AS ERRORNumber,
+ERROR_STATE() AS ERRORState,
+ERROR_PROCEDURE() AS ERRORProcedure,
+ERROR_LINE() AS ERRORLine,
+ERROR_MESSAGE() AS ERRORMessage;
+END CATCH
+
+
+------------------------------------------
+alter procedure GetPayRoleService
+
+as 
+begin TRY 
+select * from employee_payroll 
 End TRY
 BEGIN CATCH
 SELECT
@@ -74,21 +93,3 @@ END CATCH
 
 exec GetPayRoleService 1
 
-------update--------
- create procedure UpdatePayRoleServices
-(
-@Name varchar (150),
- @Salary float
-)
-as 
-begin TRY 
-Update employee_payroll set Name = @Name, Salary=@Salary where id = '@id'
- End TRY
-BEGIN CATCH
-SELECT
-ERROR_NUMBER() AS ERRORNumber,
-ERROR_STATE() AS ERRORState,
-ERROR_PROCEDURE() AS ERRORProcedure,
-ERROR_LINE() AS ERRORLine,
-ERROR_MESSAGE() AS ERRORMessage;
-END CATCH
